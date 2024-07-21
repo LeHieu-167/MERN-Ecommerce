@@ -1,15 +1,13 @@
 const stripe = require('../../config/stripe')
 const userModel = require('../../models/userModel')
+
 const paymentController = async(request, response)=>{
     try {
         const { cartItems } = request.body
-
-        console.log("cartItems",cartItems)
-
         const user = await userModel.findOne({ _id: request.userId })
         const params = {
             submit_type: 'pay',
-            mode : 'payment',
+            mode : "payment",
             payment_method_types: ['card'],
             billing_address_collection: 'auto',
             shipping_options : [
@@ -18,6 +16,9 @@ const paymentController = async(request, response)=>{
                 }
             ],
             customer_email : user.email,
+            metadata : {
+                userId : request.userId
+            },
             line_items: cartItems.map((item,index)=>{
                 return{
                     price_data: {
@@ -29,7 +30,7 @@ const paymentController = async(request, response)=>{
                                 productId : item.productId._id
                             } 
                         },
-                        unit_amount: item.productId.sellingPrice
+                        unit_amount: item.productId.sellingPrice * 100
                     },
                     adjustable_quantity : {
                         enabled : true,
@@ -38,8 +39,8 @@ const paymentController = async(request, response)=>{
                     quantity : item.quantity
                 }
             }),
-            success_url: '${process.env.FRONTEND_URL}/success',
-            cancel_url: '${process.env.FRONTEND_URL}/cancel',
+            success_url: `${process.env.FRONTEND_URL}/success`,
+            cancel_url: `${process.env.FRONTEND_URL}/cancel`,
         }
 
         const session = await stripe.checkout.sessions.create(params)
@@ -48,7 +49,7 @@ const paymentController = async(request, response)=>{
 
     } catch (error) {
         response.json({
-            message : error.message || error,
+            message : error?.message || error,
             error : true,
             success : false
         })

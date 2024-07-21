@@ -66,8 +66,6 @@ const AdminEditProduct = ({
     
   }
 
-
-  {/**upload product */}
   const handleSubmit = async(e) =>{
     e.preventDefault()
     
@@ -230,7 +228,7 @@ const AdminEditProduct = ({
 
 
 
-           <button className='px-3 py-2 bg-red-600 text-white mb-10 hover:bg-red-700'>Update Product</button>
+           <button className='px-3 py-2 bg-red-600 text-white mb-10 hover:bg-blue-700'>Update Product</button>
        </form> 
 
 
