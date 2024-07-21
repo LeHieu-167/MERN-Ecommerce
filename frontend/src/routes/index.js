@@ -12,7 +12,7 @@ import Cart from '../pages/Cart'
 import Success from '../pages/Success'
 import Cancel from '../pages/Cancel'
 import OrderPage from '../pages/OrderPage'
-import AllOrder from '../pages/AllOrder'
+import AllOrders from '../pages/AllOrders'
 import SearchProduct from '../pages/SearchProduct'
 
 const router = createBrowserRouter([
@@ -73,8 +73,8 @@ const router = createBrowserRouter([
                         element : <AllProducts/>
                     },
                     {
-                        path : "all-order",
-                        element : <AllOrder/>
+                        path : "all-orders",
+                        element : <AllOrders/>
                     }
                 ]
             },
