@@ -4,7 +4,6 @@ const addToCartModel = require('../../models/cartProduct')
 
 const endpointSecret = process.env.STRIPE_ENPOINT_WEBHOOK_SECRET_KEY
 
-
 async function getLIneItems(lineItems){
     let ProductItems = []
 
@@ -82,7 +81,7 @@ const webhooks = async(request,response) => {
     }
     break;
 
-    // ... handle other event types
+    // handle other event types
     default:
       console.log(`Unhandled event type ${event.type}`);
   }

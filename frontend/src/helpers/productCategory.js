@@ -1,7 +1,7 @@
 const productCategory = [
-    { id : 1, label : "Wireless earphones", value : "wireless-earphones"},
+    { id : 1, label : "Wireless ears", value : "wireless-ears"},
     { id : 2, label : "Camera", value : "camera"},
-    { id : 3, label : "Wired earphones", value : "wired-earphones"},
+    { id : 3, label : "Wired ears", value : "wired-ears"},
     { id : 4, label : "Mobiles", value : "mobiles"},
     { id : 5, label : "Mouse", value : "Mouse"},
     { id : 6, label : "Printers", value : "printers"},
